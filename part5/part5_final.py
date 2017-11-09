@@ -21,12 +21,11 @@ with open('mikey.txt') as mikey:
 with open('sarah.txt') as sarah:
     sarah = sarah.read()
     sarah_data = sarah.strip().split(',')
-
 julie_list = [sanitize(each_data) for each_data in julie_data]
-print(sorted(julie_list))
+print(sorted(set(julie_list))[0:3])
 james_list = [sanitize(each_data) for each_data in james_data]
-print(sorted(james_list))
+print(sorted(set(james_list))[0:3])
 mikey_list = [sanitize(each_data) for each_data in mikey_data]
-print(sorted(mikey_list))
+print(sorted(set(mikey_list))[0:3])
 sarah_list = [sanitize(each_data) for each_data in sarah_data]
-print(sorted(sarah_list))
+print(sorted(set(sarah_list))[0:3])
