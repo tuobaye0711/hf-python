@@ -24,6 +24,17 @@ class Athlete:
         return self.times
 
 
+class AthleteList(list):
+    def __init__(self, player_name, player_dob=None, player_times=[]):
+        list.__init__([])
+        self.name = player_name
+        self.dob = player_dob
+        self.extend(player_times)
+
+    def top3(self):
+        return sorted(set([sanitize(l) for l in self]))[0:3]
+
+
 def get_coach_data(filename):
     try:
         with open(filename) as f:
@@ -45,3 +56,12 @@ print(mikey.name + "'s fastest times are " + str(mikey.times))
 sarah = get_coach_data('sarah2.txt')
 sarah.add_times(['3:52', '1:22', '2:13'])
 print(sarah.name + "'s fastest times are " + str(sarah.times))
+
+vera = AthleteList('Vera Vi')
+vera.append('1.31')
+print(vera.top3())
+vera.extend(['2.11', '1.55', '3.02'])
+print(vera.top3())
+print(vera)
+print(vera.name)
+print(vera.dob)
